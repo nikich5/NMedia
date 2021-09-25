@@ -69,6 +69,7 @@
         android:layout_margin="@dimen/commonSize"
         android:autoLink="all"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/barrier2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrier"
         tools:text="@sample/posts.json/data/content" />
@@ -77,12 +78,12 @@
         android:id="@+id/like"
         android:layout_width="@dimen/buttonSize"
         android:layout_height="@dimen/buttonSize"
-        android:layout_margin="@dimen/commonSize"
+        android:layout_marginTop="@dimen/commonSize"
         android:background="@android:color/transparent"
         android:contentDescription="@string/like"
         android:src="@drawable/ic_baseline_favorite_border_24"
         app:layout_constraintStart_toStartOf="@id/content"
-        app:layout_constraintTop_toBottomOf="@id/content" />
+        app:layout_constraintTop_toBottomOf="@id/barrier2" />
 
     <TextView
         android:id="@+id/likeCount"
@@ -100,10 +101,10 @@
         android:layout_height="@dimen/buttonSize"
         android:layout_margin="@dimen/commonSize"
         android:background="@android:color/transparent"
+        android:contentDescription="@string/share"
         android:src="@drawable/ic_baseline_share_24"
         app:layout_constraintStart_toEndOf="@id/likeCount"
-        app:layout_constraintTop_toBottomOf="@id/content"
-        android:contentDescription="@string/share" />
+        app:layout_constraintTop_toBottomOf="@id/barrier2" />
 
     <TextView
         android:id="@+id/shareCount"
@@ -121,10 +122,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/commonSize"
         android:text="150"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/view"
         app:layout_constraintBottom_toBottomOf="@id/view"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/view" />
 
     <ImageButton
         android:id="@+id/view"
@@ -132,10 +132,17 @@
         android:layout_height="@dimen/buttonSize"
         android:layout_margin="@dimen/commonSize"
         android:background="@android:color/transparent"
+        android:contentDescription="@string/views"
         android:src="@drawable/ic_baseline_remove_red_eye_24"
         app:layout_constraintEnd_toStartOf="@id/viewCount"
-        app:layout_constraintTop_toBottomOf="@id/content"
-        android:contentDescription="@string/views" />
+        app:layout_constraintTop_toBottomOf="@id/barrier2" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="content" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
