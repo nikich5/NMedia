@@ -68,8 +68,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/commonSize"
         android:autoLink="all"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/barrier2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrier"
         tools:text="@sample/posts.json/data/content" />
@@ -81,7 +81,7 @@
         android:layout_marginTop="@dimen/commonSize"
         android:background="@android:color/transparent"
         android:contentDescription="@string/like"
-        android:src="@drawable/ic_baseline_favorite_border_24"
+        android:src="@drawable/like"
         app:layout_constraintStart_toStartOf="@id/content"
         app:layout_constraintTop_toBottomOf="@id/barrier2" />
 
@@ -111,20 +111,20 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/commonSize"
-        android:text="29"
         app:layout_constraintBottom_toBottomOf="@id/share"
         app:layout_constraintStart_toEndOf="@id/share"
-        app:layout_constraintTop_toTopOf="@id/share" />
+        app:layout_constraintTop_toTopOf="@id/share"
+        tools:text="29" />
 
     <TextView
         android:id="@+id/viewCount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/commonSize"
-        android:text="150"
         app:layout_constraintBottom_toBottomOf="@id/view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/view" />
+        app:layout_constraintTop_toTopOf="@id/view"
+        tools:text="150" />
 
     <ImageButton
         android:id="@+id/view"
