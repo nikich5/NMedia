@@ -3,4 +3,5 @@
     <dimen name="avatarSize">48dp</dimen>
     <dimen name="commonSize">16dp</dimen>
     <dimen name="buttonSize">48dp</dimen>
+    <dimen name="common_size_double">32dp</dimen>
 </resources>

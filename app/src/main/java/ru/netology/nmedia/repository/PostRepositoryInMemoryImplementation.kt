@@ -28,7 +28,7 @@ class PostRepositoryInMemoryImplementation : PostRepository {
         ),
         Post(
             id = 6,
-            likes = 9999999999L,
+            likes = 999999L,
             shares = 92111L,
             views = 10000L,
             author = "Нетология",

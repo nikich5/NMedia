@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.ItemPostBinding
 import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.utils.Format
 
 class PostViewHolder (
     private val binding: ItemPostBinding,
@@ -16,9 +17,9 @@ class PostViewHolder (
             author.text = post.author
             published.text = post.published
             content.text = post.content
-            likeCount.text = formatNumber(post.likes)
-            shareCount.text = formatNumber(post.shares)
-            viewCount.text = formatNumber(post.views)
+            likeCount.text = Format.formatNumber(post.likes)
+            shareCount.text = Format.formatNumber(post.shares)
+            viewCount.text = Format.formatNumber(post.views)
             if (!post.likedByMe) {
                 like.setImageResource(R.drawable.like)
             } else {
@@ -34,33 +35,4 @@ class PostViewHolder (
             }
         }
     }
-}
-
-
-fun formatNumber(number: Long): String {
-    val result = when {
-        (number >= 1_000_000) -> {
-            val newNumber = (number.toDouble() / 1000000)
-            if (String.format("%.1f", newNumber).endsWith("0")) {
-                return String.format("%.0f", newNumber) + "M"
-            }
-            return String.format("%.1f", newNumber) + "M"
-        }
-
-        (number >= 10_000) -> {
-            val newNumber = number / 1000
-            return "$newNumber" + "K"
-        }
-
-        (number >= 1_000) -> {
-            val newNumber: Double = (number.toDouble() / 1000)
-            if (String.format("%.1f", newNumber).endsWith("0")) {
-                return String.format("%.0f", newNumber) + "K"
-            }
-            return String.format("%.1f", newNumber) + "K"
-        }
-
-        else -> "$number"
-    }
-    return result
 }
