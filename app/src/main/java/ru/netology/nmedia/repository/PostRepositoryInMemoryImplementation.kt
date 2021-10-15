@@ -7,9 +7,10 @@ import ru.netology.nmedia.dto.Post
 
 class PostRepositoryInMemoryImplementation : PostRepository {
 
+    private var postId = 1L
     private var posts = listOf(
         Post(
-            id = 8,
+            id = postId++,
             likes = 0L,
             shares = 0L,
             views = 0L,
@@ -18,7 +19,7 @@ class PostRepositoryInMemoryImplementation : PostRepository {
             content = "Жена посылает мужа—программиста в магазин:   — Купи батон колбасы. Да, и спроси, есть ли яйца. Если есть — возьми десяток.   Программист приходит в магазин:   — Батон колбасы, пожалуйста. Ага, спасибо. А яйца у вас в продаже есть?   — Есть.   — Тогда, пожалуйста, ещё девять батонов колбасы. "
         ),
         Post(
-            id = 7,
+            id = postId++,
             likes = 1L,
             shares = 1L,
             views = 1L,
@@ -27,7 +28,7 @@ class PostRepositoryInMemoryImplementation : PostRepository {
             content = "Встречаются два бывших одноклассника. Один — новый русский, а другой — программист. Первый спрашивает второго: — Ну что, братан, как дела? — Да вот, уже почти год сижу на Яве, пишу всякие приложения. — Ну ты крут! Впрочем, я тоже в этом году на Кипре две недели пробыл. "
         ),
         Post(
-            id = 6,
+            id = postId++,
             likes = 999999L,
             shares = 92111L,
             views = 10000L,
@@ -36,7 +37,7 @@ class PostRepositoryInMemoryImplementation : PostRepository {
             content = "Перепись населения у программиста: — Ваш родной язык. — Как это родной язык? — Ну какой Вы язык с детства изучали, всю жизнь использовали? — Basic. — Да нет, настоящий. — А! Настоящий! Тогда Си. "
         ),
         Post(
-            id = 5,
+            id = postId++,
             likes = 99999999L,
             shares = 92423L,
             views = 1254L,
@@ -45,7 +46,7 @@ class PostRepositoryInMemoryImplementation : PostRepository {
             content = "Один программист другому: — Вот представь:  — У тебя есть 1000 рублей... Или, для круглого счета, пусть у тебя 1024. "
         ),
         Post(
-            id = 4,
+            id = postId++,
             likes = 999999L,
             shares = 23L,
             views = 125L,
@@ -54,7 +55,7 @@ class PostRepositoryInMemoryImplementation : PostRepository {
             content = "Сидит программист в баре, пьет пиво. К нему подходит девица: — Если хочешь хорошо отдохнуть сегодня, то меня зовут Бетти... — А если я не хочу сегодня хорошо отдохнуть, то как тебя зовут? "
         ),
         Post(
-            id = 3,
+            id = postId++,
             likes = 99999L,
             shares = 9L,
             views = 125332644L,
@@ -63,7 +64,7 @@ class PostRepositoryInMemoryImplementation : PostRepository {
             content = "Приходит студент—программист на занятия с утра злой. Его одногрупники спрашивают: — Ты чего такой злой? — Да программу вчера всю ночь набивал. — И что, не заработала? — Да нет, заработала. — Может, неправильно заработала? — Да нет, правильно. — А что тогда? — Да на Backspace уснул…"
         ),
         Post(
-            id = 2,
+            id = postId++,
             likes = 9999L,
             shares = 1235577L,
             views = 111111111L,
@@ -72,7 +73,7 @@ class PostRepositoryInMemoryImplementation : PostRepository {
             content = "Приходят к программисту гости, а у него шум, гам. В общем, ссорятся между собой его дети. Гости спрашивают программера: — А чего у тебя дети так орут? А он им в ответ, оторвавшись от компа: — Конфликт версий."
         ),
         Post(
-            id = 1,
+            id = postId++,
             likes = 999L,
             shares = 92L,
             views = 1253644L,
@@ -80,7 +81,7 @@ class PostRepositoryInMemoryImplementation : PostRepository {
             published = "25 сентября в 13:37",
             content = "Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb"
         )
-    )
+    ).reversed()
     private val data = MutableLiveData(posts)
 
     override fun getAll(): LiveData<List<Post>> = data
@@ -102,6 +103,25 @@ class PostRepositoryInMemoryImplementation : PostRepository {
         posts = posts.map {
             if (it.id == id) it.copy(shares = it.shares + 1) else it
         }
+        data.value = posts
+    }
+
+    override fun removeByID(id: Long) {
+        posts = posts.filter { it.id != id }
+        data.value = posts
+    }
+
+    override fun save(post: Post) {
+        if (post.id == 0L) {
+            posts = listOf(post.copy(id = postId++,
+                author = "Me",
+                likedByMe = false,
+                published = "now")
+            ) + posts
+            data.value = posts
+            return
+        }
+        posts = posts.map { if (it.id != post.id) it else it.copy(content = post.content) }
         data.value = posts
     }
 }
