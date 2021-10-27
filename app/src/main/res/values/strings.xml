@@ -13,4 +13,6 @@
     <string name="edit_message">Edit message</string>
     <string name="edit_icon">Edit icon</string>
     <string name="close_icon">Close edit</string>
+    <string name="add">add</string>
+    <string name="apply_text">Apply text</string>
 </resources>

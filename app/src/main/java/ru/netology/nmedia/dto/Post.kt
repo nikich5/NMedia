@@ -8,5 +8,6 @@ data class Post (
     val author: String = "",
     val published: String = "",
     val content: String = "",
+    val video: String ="",
     val likedByMe: Boolean = false
         )

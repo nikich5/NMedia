@@ -4,114 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/barrier2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
         tools:listitem="@layout/item_post" />
 
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add"
+        style="@style/Widget.Design.FloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:barrierDirection="top"
-        app:constraint_referenced_ids="save, content"
-        app:layout_constraintTop_toBottomOf="@id/list" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="top"
-        app:constraint_referenced_ids="edit_message, edit_icon, preview_content, close" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="visible"
-        app:constraint_referenced_ids="close, barrier2, edit_icon, edit_message, preview_content" />
-
-    <ImageView
-        android:id="@+id/edit_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/commonSize"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/edit_icon"
-        android:src="@drawable/ic_baseline_create_24"
-        app:layout_constraintBottom_toTopOf="@id/content"
-        app:layout_constraintTop_toBottomOf="@id/barrier2"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/edit_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/commonSize"
-        android:text="@string/edit_message"
-        android:textColor="#1565C0"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/preview_content"
-        app:layout_constraintStart_toEndOf="@id/edit_icon"
-        app:layout_constraintTop_toBottomOf="@id/barrier2"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <TextView
-        android:id="@+id/preview_content"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/commonSize"
-        android:textColor="#616161"
-        android:textSize="16sp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        app:layout_constraintEnd_toStartOf="@id/close"
-        app:layout_constraintStart_toEndOf="@id/edit_icon"
-        app:layout_constraintTop_toBottomOf="@id/edit_message"
-        app:layout_constraintBottom_toTopOf="@id/barrier"
-        tools:text="тестовый текст" />
-
-    <ImageButton
-        android:id="@+id/close"
-        android:layout_width="@dimen/buttonSize"
-        android:layout_height="@dimen/buttonSize"
-        android:contentDescription="@string/close_icon"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_baseline_close_24"
-        app:layout_constraintBottom_toTopOf="@id/content"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <EditText
-        android:id="@+id/content"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:hint="@string/post_text"
-        android:importantForAutofill="no"
-        android:inputType="textMultiLine"
-        android:padding="@dimen/commonSize"
+        android:layout_margin="@dimen/commonSize"
+        app:srcCompat="@drawable/ic_baseline_add_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/save"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrier" />
-
-    <ImageButton
-        android:id="@+id/save"
-        android:layout_width="@dimen/buttonSize"
-        android:layout_height="@dimen/buttonSize"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/save"
-        android:src="@drawable/ic_baseline_apply_text"
-        app:layout_constraintBottom_toBottomOf="@id/content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/content" />
-
+        android:contentDescription="@string/add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
