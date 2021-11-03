@@ -42,4 +42,11 @@
         <item name="minHeight">@dimen/buttonSize</item>
     </style>
 
+    <style name="play_button"
+        parent="Widget.Design.FloatingActionButton">
+        <item name="backgroundTint">#d32f2f</item>
+        <item name="minWidth">@dimen/buttonSize</item>
+        <item name="minHeight">@dimen/buttonSize</item>
+    </style>
+
 </resources>

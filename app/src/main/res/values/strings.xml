@@ -15,4 +15,7 @@
     <string name="close_icon">Close edit</string>
     <string name="add">add</string>
     <string name="apply_text">Apply text</string>
+    <string name="video_name">Video name</string>
+    <string name="video_preview">Video preview</string>
+    <string name="play_button">Play button</string>
 </resources>

@@ -16,4 +16,7 @@
     <string name="close_icon">Закрыть редактирование</string>
     <string name="add">Добавить</string>
     <string name="apply_text">Подтвердить текст</string>
+    <string name="video_name">Название видео</string>
+    <string name="video_preview">Превью видео</string>
+    <string name="play_button">Кнопка воспроизведения</string>
 </resources>
