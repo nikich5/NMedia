@@ -107,9 +107,13 @@ class PostRepositoryInMemoryImplementation : PostRepository {
         data.value = posts
     }
 
-    override fun removeByID(id: Long) {
+    override fun removeById(id: Long) {
         posts = posts.filter { it.id != id }
         data.value = posts
+    }
+
+    override fun findById(id: Long): Post? {
+        return posts.find { it.id == id }
     }
 
     override fun save(post: Post) {

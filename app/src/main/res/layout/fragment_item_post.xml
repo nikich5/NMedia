@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.FeedFragment">
 
     <ImageView
         android:id="@+id/avatar"
@@ -68,6 +68,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/commonSize"
+        android:scrollbars="vertical"
         android:autoLink="all"
         app:layout_constraintBottom_toTopOf="@id/barrier2"
         app:layout_constraintEnd_toEndOf="parent"

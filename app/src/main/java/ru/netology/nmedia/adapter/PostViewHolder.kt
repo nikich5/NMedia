@@ -4,12 +4,12 @@ import android.widget.PopupMenu
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nmedia.R
-import ru.netology.nmedia.databinding.ItemPostBinding
+import ru.netology.nmedia.databinding.FragmentItemPostBinding
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.utils.Format
 
-class PostViewHolder (
-    private val binding: ItemPostBinding,
+class PostViewHolder(
+    private val binding: FragmentItemPostBinding,
     private val onInteractionListener: OnInteractionListener
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(post: Post) {
@@ -38,6 +38,10 @@ class PostViewHolder (
 
             videoImage.setOnClickListener {
                 onInteractionListener.onPlay(post)
+            }
+
+            root.setOnClickListener {
+                onInteractionListener.onGoToPost(post)
             }
 
             menu.setOnClickListener {

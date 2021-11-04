@@ -3,14 +3,14 @@ package ru.netology.nmedia.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import ru.netology.nmedia.databinding.ItemPostBinding
+import ru.netology.nmedia.databinding.FragmentItemPostBinding
 import ru.netology.nmedia.dto.Post
 
 class PostsAdapter(
     private val onInteractionListener: OnInteractionListener
 ): ListAdapter<Post, PostViewHolder>(PostDiffCallBack()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
-        val binding = ItemPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = FragmentItemPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return PostViewHolder(binding, onInteractionListener)
     }
 
