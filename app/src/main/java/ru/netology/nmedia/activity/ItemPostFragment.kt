@@ -46,7 +46,7 @@ class ItemPostFragment : Fragment() {
                 view.text = Format.formatNumber(it.views)
                 like.isChecked = it.likedByMe
                 like.text = Format.formatNumber(it.likes)
-                videoGroup.isVisible = it.video.isNotBlank()
+                videoGroup.isVisible = it.video?.isNotBlank() ?: false
             }
         })
 
