@@ -46,7 +46,7 @@ class ItemPostFragment : Fragment() {
                 view.text = Format.formatNumber(it.views)
                 like.isChecked = it.likedByMe
                 like.text = Format.formatNumber(it.likes)
-                videoGroup.isVisible = it.video?.isNotBlank() ?: false
+                videoGroup.isVisible = it.video.isNotBlank()
             }
         })
 
@@ -68,15 +68,7 @@ class ItemPostFragment : Fragment() {
                 startActivity(shareIntent)
             }
 
-            playButton.setOnClickListener {
-                val intent = Intent().apply {
-                    action = Intent.ACTION_VIEW
-                    data = Uri.parse(post.video)
-                }
-                startActivity(intent)
-            }
-
-            videoImage.setOnClickListener {
+            videoGroup.setOnClickListener {
                 val intent = Intent().apply {
                     action = Intent.ACTION_VIEW
                     data = Uri.parse(post.video)

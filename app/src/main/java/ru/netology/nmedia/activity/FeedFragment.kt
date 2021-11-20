@@ -67,7 +67,7 @@ class FeedFragment : Fragment() {
             }
 
             override fun onGoToPost(post: Post) {
-                viewModel.chooseCurrentPost(post)
+                viewModel.currentPost.value = post
                 findNavController().navigate(R.id.action_feedFragment_to_itemPostFragment)
             }
         })

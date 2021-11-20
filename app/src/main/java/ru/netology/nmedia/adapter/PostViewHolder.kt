@@ -22,7 +22,7 @@ class PostViewHolder(
             view.text = Format.formatNumber(post.views)
             like.isChecked = post.likedByMe
             like.text = Format.formatNumber(post.likes)
-            videoGroup.isVisible = post.video?.isNotBlank() ?: false
+            videoGroup.isVisible = post.video.isNotBlank()
 
             like.setOnClickListener {
                 onInteractionListener.onLike(post)
@@ -32,11 +32,7 @@ class PostViewHolder(
                 onInteractionListener.onShare(post)
             }
 
-            playButton.setOnClickListener {
-                onInteractionListener.onPlay(post)
-            }
-
-            videoImage.setOnClickListener {
+            videoGroup.setOnClickListener {
                 onInteractionListener.onPlay(post)
             }
 
