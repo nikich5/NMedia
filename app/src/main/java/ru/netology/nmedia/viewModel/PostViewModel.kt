@@ -8,7 +8,7 @@ import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.repository.PostRepository
 import ru.netology.nmedia.repository.PostRepositoryRoomImpl
 
-private val empty = Post()
+private val empty = Post(author = "Me", published = "Now")
 
 class PostViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: PostRepository = PostRepositoryRoomImpl(
@@ -22,8 +22,8 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
         edited.value?.let {
             repository.save(it)
         }
-        currentPost.value = edited.value
         edited.value = empty
+        currentPost.value = findById(currentPost.value?.id ?: 0)
     }
 
     fun edit(post: Post) {

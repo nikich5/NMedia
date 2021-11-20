@@ -37,6 +37,7 @@ class PostRepositoryRoomImpl(private val dao: PostDao) : PostRepository {
     }
 
     override fun findById(id: Long): Post {
+        if(id == 0L) { return Post() }
         return PostEntity().toDto(dao.findById(id))
     }
 

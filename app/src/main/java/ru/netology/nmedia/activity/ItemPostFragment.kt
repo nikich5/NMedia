@@ -82,6 +82,7 @@ class ItemPostFragment : Fragment() {
                     setOnMenuItemClickListener { item ->
                         when (item.itemId) {
                             R.id.remove -> {
+                                viewModel.currentPost.value = Post()
                                 viewModel.removeById(post.id)
                                 findNavController().navigateUp()
                                 true
